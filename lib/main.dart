@@ -38,12 +38,15 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-        tween: Tween<double>(begin: 0, end: 100),
+        tween: Tween<double>(begin: 0, end: 1),
         duration: Duration(seconds: 1),
         builder: (context, double _value, Widget child) {
           return Padding(
-            padding: EdgeInsets.only(top: _value),
-            child: child,
+            padding: EdgeInsets.only(top: _value * 100),
+            child: Opacity(
+              opacity: _value,
+              child: child,
+            ),
           );
         },
       )
