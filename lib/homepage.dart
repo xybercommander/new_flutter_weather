@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
                           Text(
                             '${DateTime.now().hour}:${minuteFormat()}, ${weekday[DateTime.now().weekday].substring(0, 3)} ${months[DateTime.now().month].substring(0, 3)} ${DateTime.now().day}',
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 20,                              
                             ),
                           ),
                           Text(
@@ -100,9 +100,63 @@ class _HomePageState extends State<HomePage> {
                 //---------- BOTTOM CONTAINER ----------//
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.width / 1.1,
-                  color: Colors.amberAccent,
-                  child: Text('Bottom Container'),
+                  height: MediaQuery.of(context).size.width / 1.1,                  
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      /*1*/
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8, right: 32),
+                        child: Row(                          
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 16),
+                              child: Text.rich(
+                                TextSpan(
+                                  text: '28',
+                                  style: TextStyle(fontSize: 120, fontWeight: FontWeight.bold),
+                                  children: <InlineSpan>[
+                                    TextSpan(
+                                      text: '℃',
+                                      style: TextStyle(fontSize: 40, fontWeight: FontWeight.w100),
+                                    )
+                                  ]
+                                )
+                              ),
+                            ),
+                            Spacer(),
+                            Container(
+                              height: 120,
+                              padding: EdgeInsets.symmetric(vertical: 22),                              
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('↑ 32℃', style: TextStyle(fontSize: 18),),
+                                  Text('↓ 16℃', style: TextStyle(fontSize: 18),),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      /*2*/
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 30),
+                        height: 5,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(16)
+                        ),
+                      ),
+                      /*3*/
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 16),
+                        child: Text('Clear and Sunny', style: TextStyle(fontSize: 24),),
+                      )
+                    ],
+                  ),
                 )
               ],
             ),

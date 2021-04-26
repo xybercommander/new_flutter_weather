@@ -61,9 +61,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Orelega
+    - family: Comfortaa
       fonts:
-        - asset: assets/fonts/OrelegaOne-Regular.ttf
+        - asset: assets/fonts/Comfortaa-VariableFont_wght.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
