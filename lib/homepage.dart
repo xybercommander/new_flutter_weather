@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:new_weather_app/modules/constants.dart';
 import 'package:new_weather_app/widgets/bg-color-widgets.dart';
 
 class HomePage extends StatefulWidget {
@@ -33,6 +34,17 @@ class _HomePageState extends State<HomePage> {
       return '${DateTime.now().minute}';
     }
   }
+
+  int hour;
+  String hourFormat() {
+    if(DateTime.now().hour - 10 < 0) {
+      return '0${DateTime.now().hour}';
+    } else {
+      return '${DateTime.now().hour}';
+    }
+  }
+
+
 
   @override
   void initState() {
@@ -72,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '${DateTime.now().hour}:${minuteFormat()}, ${weekday[DateTime.now().weekday].substring(0, 3)} ${months[DateTime.now().month].substring(0, 3)} ${DateTime.now().day}',
+                            '${hourFormat()}:${minuteFormat()}, ${weekday[DateTime.now().weekday].substring(0, 3)} ${months[DateTime.now().month].substring(0, 3)} ${DateTime.now().day}',
                             style: TextStyle(
                               fontSize: 20,                              
                             ),
@@ -100,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                 //---------- BOTTOM CONTAINER ----------//
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.width / 1.1,                  
+                  height: MediaQuery.of(context).size.width / 1.2,                  
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -154,6 +166,26 @@ class _HomePageState extends State<HomePage> {
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 16),
                         child: Text('Clear and Sunny', style: TextStyle(fontSize: 24),),
+                      ),
+                      /*4*/
+                      Expanded(
+                        child: ListView.builder(                            
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 11,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text('27℃', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+                                  Image.asset(Constants.iconMap['Clear'], height: 40, width: 40,),
+                                  Text('11 am', style: TextStyle(fontSize: 15)),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
                       )
                     ],
                   ),
