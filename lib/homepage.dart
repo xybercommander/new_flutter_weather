@@ -144,8 +144,8 @@ class _HomePageState extends State<HomePage> {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text('↑ 32℃', style: TextStyle(fontSize: 18),),
-                                  Text('↓ 16℃', style: TextStyle(fontSize: 18),),
+                                  Text('↑ 32℃', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                                  Text('↓ 16℃', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                                 ],
                               ),
                             )
