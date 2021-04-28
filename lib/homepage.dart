@@ -102,7 +102,8 @@ class _HomePageState extends State<HomePage> {
                       MaterialButton(
                         onPressed: () => Navigator.push(context, PageTransition(
                           child: SearchPage(),
-                          type: PageTransitionType.scale
+                          type: PageTransitionType.rightToLeftWithFade,
+                          duration: Duration(milliseconds: 400)                          
                         )),
                         child: Icon(Icons.search, color: Colors.white,),
                         color: Colors.black12,
