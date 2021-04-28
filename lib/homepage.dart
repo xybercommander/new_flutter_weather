@@ -1,8 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:new_weather_app/modules/constants.dart';
+import 'package:new_weather_app/searchpage.dart';
 import 'package:new_weather_app/widgets/bg-color-widgets.dart';
+import 'package:page_transition/page_transition.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -99,7 +100,10 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                       MaterialButton(
-                        onPressed: () => print('Search'),
+                        onPressed: () => Navigator.push(context, PageTransition(
+                          child: SearchPage(),
+                          type: PageTransitionType.scale
+                        )),
                         child: Icon(Icons.search, color: Colors.white,),
                         color: Colors.black12,
                         elevation: 0,
