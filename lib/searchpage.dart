@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geocoder/geocoder.dart';
+import 'package:new_weather_app/services/api.dart';
 
 class SearchPage extends StatefulWidget {
   @override
@@ -45,7 +46,8 @@ class _SearchPageState extends State<SearchPage> {
             GestureDetector(
               onTap: () async {
                 var address = await Geocoder.local.findAddressesFromQuery(cityNameTextEditingController.text);
-                print(address.first.coordinates);
+                // print(address.first.coordinates);
+                WeatherApi().callWeatherData(address.first.coordinates.latitude, address.first.coordinates.longitude);
               },
               child: Container(
                 height: 50,
