@@ -9,6 +9,7 @@ class WeatherApi {
 
     try {
 
+      // TODO: Remove the API KEY from the github repo
       var max_min_url = Uri.parse('https://api.openweathermap.org/data/2.5/onecall?lat=$lat&lon=$lon&exclude=hourly,minutely,alerts,current&appid=fc068a7084e8ead061063e8028105b99');
       Response response = await get(max_min_url);
       var data = jsonDecode(response.body);
@@ -16,7 +17,7 @@ class WeatherApi {
       WeatherConstants.max_temp = (data['daily'][0]['temp']['max'] - 273.15).round();
       
       var hourly_weather = Uri.parse('https://api.openweathermap.org/data/2.5/onecall?lat=$lat&lon=$lon&exclude=current,daily,minutely,alerts&appid=fc068a7084e8ead061063e8028105b99');
-      
+
 
     } catch(e) {
       print(e.toString());
