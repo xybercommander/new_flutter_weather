@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:new_weather_app/modules/constants.dart';
+import 'package:new_weather_app/modules/weather_constants.dart';
 import 'package:new_weather_app/searchpage.dart';
 import 'package:new_weather_app/widgets/bg-color-widgets.dart';
 import 'package:page_transition/page_transition.dart';
@@ -149,8 +150,8 @@ class _HomePageState extends State<HomePage> {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text('↑ 32℃', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-                                  Text('↓ 16℃', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                                  Text('↑ ${WeatherConstants.max_temp}℃', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                                  Text('↓ ${WeatherConstants.min_temp}℃', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                                 ],
                               ),
                             )

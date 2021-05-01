@@ -47,7 +47,8 @@ class _SearchPageState extends State<SearchPage> {
               onTap: () async {
                 var address = await Geocoder.local.findAddressesFromQuery(cityNameTextEditingController.text);
                 // print(address.first.coordinates);
-                WeatherApi().callWeatherData(address.first.coordinates.latitude, address.first.coordinates.longitude);
+                await WeatherApi().callWeatherData(address.first.coordinates.latitude, address.first.coordinates.longitude);
+                Navigator.pop(context);
               },
               child: Container(
                 height: 50,
