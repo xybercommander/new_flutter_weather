@@ -46,16 +46,6 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  // //-------- HOURLY HOURS IN THE BOTTOM CONTAINER --------//
-  // String hourlyHoursFormat(int index) {
-  //   if(DateTime.now().hour + index >= 12 && DateTime.now().hour + index <= 23) {
-  //     return '${DateTime.now().hour + index}pm';
-  //   } else {
-  //     return '${DateTime.now().hour + index}am';
-  //   }
-  // }
-
-
 
   @override
   void initState() {
