@@ -46,14 +46,14 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  //-------- HOURLY HOURS IN THE BOTTOM CONTAINER --------//
-  String hourlyHoursFormat(int index) {
-    if(DateTime.now().hour + index >= 12 && DateTime.now().hour + index <= 23) {
-      return '${DateTime.now().hour + index}pm';
-    } else {
-      return '${DateTime.now().hour + index}am';
-    }
-  }
+  // //-------- HOURLY HOURS IN THE BOTTOM CONTAINER --------//
+  // String hourlyHoursFormat(int index) {
+  //   if(DateTime.now().hour + index >= 12 && DateTime.now().hour + index <= 23) {
+  //     return '${DateTime.now().hour + index}pm';
+  //   } else {
+  //     return '${DateTime.now().hour + index}am';
+  //   }
+  // }
 
 
 
@@ -182,7 +182,8 @@ class _HomePageState extends State<HomePage> {
                       ),
                       /*4*/
                       Expanded(
-                        child: ListView.builder(                            
+                        child: ListView.builder(   
+                          physics: BouncingScrollPhysics(),                         
                           scrollDirection: Axis.horizontal,
                           itemCount: 11,
                           itemBuilder: (context, index) {
@@ -193,7 +194,7 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   Text('${WeatherConstants.hourlyTemp[index]}℃', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
                                   Image.asset(Constants.iconMap[WeatherConstants.hourlyDescription[index]], height: 40, width: 40,),
-                                  Text(hourlyHoursFormat(index), style: TextStyle(fontSize: 15)),
+                                  Text('${DateTime.now().hour + index}:00', style: TextStyle(fontSize: 15)),
                                 ],
                               ),
                             );
