@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
+// ignore: missing_return
 Widget weatherBackground(context, String description) {
   if(description == 'clear sky') {
     return Positioned(      

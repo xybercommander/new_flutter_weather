@@ -150,8 +150,8 @@ class _HomePageState extends State<HomePage> {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text('↑ ${WeatherConstants.max_temp}℃', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
-                                  Text('↓ ${WeatherConstants.min_temp}℃', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                                  Text('↑ ${WeatherConstants.maxTemp}℃', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                                  Text('↓ ${WeatherConstants.minTemp}℃', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                                 ],
                               ),
                             )
