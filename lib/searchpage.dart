@@ -56,6 +56,7 @@ class _SearchPageState extends State<SearchPage> with SingleTickerProviderStateM
                 FocusScope.of(context).unfocus(); // Unfocuses the keyboard
                 var address = await Geocoder.local.findAddressesFromQuery(cityNameTextEditingController.text);
                 // print(address.first.coordinates);
+                WeatherConstants.cityName = '${cityNameTextEditingController.text[0].toUpperCase()}${cityNameTextEditingController.text.substring(1)}, ${address.first.countryCode}';
                 await WeatherApi().callWeatherData(address.first.coordinates.latitude, address.first.coordinates.longitude);                
                 Navigator.pop(context);
               },

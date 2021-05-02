@@ -1,4 +1,5 @@
 class WeatherConstants {
+  static String cityName = 'No Data';
   static int maxTemp = 0;
   static int minTemp = 0;
   static int currentTemp = 0;

@@ -89,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           Text(
-                            'Kolkata, IN',
+                            '${WeatherConstants.cityName}',
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold
