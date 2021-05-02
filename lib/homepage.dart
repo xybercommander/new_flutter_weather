@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> weekday = ['Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday'];
+  List<String> weekday = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   List<String> months = [
     'December',
     'January',
@@ -27,8 +27,8 @@ class _HomePageState extends State<HomePage> {
     'October',
     'November'    
   ];
-
-  int minute;
+  
+  //------ MINUTES IN THE TIME IN THE TOP CONTAINER  ------//
   String minuteFormat() {
     if(DateTime.now().minute - 10 < 0) {
       return '0${DateTime.now().minute}';
@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  int hour;
+  //------ HOURS IN THE TIME IN THE TOP CONTAINER  ------//
   String hourFormat() {
     if(DateTime.now().hour - 10 < 0) {
       return '0${DateTime.now().hour}';
@@ -46,14 +46,21 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  //-------- HOURLY HOURS IN THE BOTTOM CONTAINER --------//
+  String hourlyHoursFormat(int index) {
+    if(DateTime.now().hour + index >= 12 && DateTime.now().hour + index <= 23) {
+      return '${DateTime.now().hour + index}pm';
+    } else {
+      return '${DateTime.now().hour + index}am';
+    }
+  }
+
 
 
   @override
   void initState() {
     Timer.periodic(Duration(seconds: 1), (timer) {
-      setState(() {
-        
-      });
+      setState(() {});
     });
     super.initState();
   }
@@ -86,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '${hourFormat()}:${minuteFormat()}, ${weekday[DateTime.now().weekday].substring(0, 3)} ${months[DateTime.now().month].substring(0, 3)} ${DateTime.now().day}',
+                            '${hourFormat()}:${minuteFormat()}, ${weekday[DateTime.now().weekday - 1].substring(0, 3)} ${months[DateTime.now().month].substring(0, 3)} ${DateTime.now().day}',
                             style: TextStyle(
                               fontSize: 20,                              
                             ),
@@ -132,7 +139,7 @@ class _HomePageState extends State<HomePage> {
                               padding: const EdgeInsets.only(left: 16),
                               child: Text.rich(
                                 TextSpan(
-                                  text: '28',
+                                  text: '${WeatherConstants.currentTemp}',
                                   style: TextStyle(fontSize: 120, fontWeight: FontWeight.bold),
                                   children: <InlineSpan>[
                                     TextSpan(
@@ -171,7 +178,7 @@ class _HomePageState extends State<HomePage> {
                       /*3*/
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: 30, vertical: 16),
-                        child: Text('Clear and Sunny', style: TextStyle(fontSize: 24),),
+                        child: Text('${WeatherConstants.hourlyDescription[0]}', style: TextStyle(fontSize: 24),),
                       ),
                       /*4*/
                       Expanded(
@@ -184,9 +191,9 @@ class _HomePageState extends State<HomePage> {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                                 children: [
-                                  Text('27℃', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
-                                  Image.asset(Constants.iconMap['Clear'], height: 40, width: 40,),
-                                  Text('11 am', style: TextStyle(fontSize: 15)),
+                                  Text('${WeatherConstants.hourlyTemp[index]}℃', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+                                  Image.asset(Constants.iconMap[WeatherConstants.hourlyDescription[index]], height: 40, width: 40,),
+                                  Text(hourlyHoursFormat(index), style: TextStyle(fontSize: 15)),
                                 ],
                               ),
                             );

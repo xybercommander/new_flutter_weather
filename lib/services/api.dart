@@ -23,8 +23,8 @@ class WeatherApi {
       // print(hourly_data['hourly'][0]['temp']);
       WeatherConstants.currentTemp = (hourly_data['hourly'][0]['temp'] - 273.15).round();
       for(int i = 0; i < 12; i++) {                        
-        WeatherConstants.hourlyTemp.add((hourly_data['hourly'][i]['temp'] - 273.15).round());
-        WeatherConstants.hourlyDescription.add(hourly_data['hourly'][i]['weather'][0]['main']);
+        WeatherConstants.hourlyTemp[i] = (hourly_data['hourly'][i]['temp'] - 273.15).round();
+        WeatherConstants.hourlyDescription[i] = hourly_data['hourly'][i]['weather'][0]['main'];
       }       
 
 

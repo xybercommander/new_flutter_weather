@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geocoder/geocoder.dart';
+import 'package:new_weather_app/modules/weather_constants.dart';
 import 'package:new_weather_app/services/api.dart';
 
 class SearchPage extends StatefulWidget {
@@ -47,7 +48,7 @@ class _SearchPageState extends State<SearchPage> {
               onTap: () async {
                 var address = await Geocoder.local.findAddressesFromQuery(cityNameTextEditingController.text);
                 // print(address.first.coordinates);
-                await WeatherApi().callWeatherData(address.first.coordinates.latitude, address.first.coordinates.longitude);
+                await WeatherApi().callWeatherData(address.first.coordinates.latitude, address.first.coordinates.longitude);                
                 Navigator.pop(context);
               },
               child: Container(

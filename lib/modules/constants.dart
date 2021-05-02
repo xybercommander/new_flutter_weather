@@ -13,6 +13,6 @@ class Constants {
     'Squall': 'assets/icons/006-cloudy-1.png',
     'Tornado': 'assets/icons/005-storm-1.png',
     'Clear': 'assets/icons/016-sun.png',
-    'Cloud': 'assets/icons/015-cloud.png',
+    'Clouds': 'assets/icons/015-cloud.png',
   };
 }
