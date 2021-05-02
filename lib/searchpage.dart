@@ -8,9 +8,12 @@ class SearchPage extends StatefulWidget {
   _SearchPageState createState() => _SearchPageState();
 }
 
-class _SearchPageState extends State<SearchPage> {
+class _SearchPageState extends State<SearchPage> with SingleTickerProviderStateMixin {
   TextEditingController cityNameTextEditingController = TextEditingController();
   FocusNode focusNode = FocusNode();
+
+  double animationValue = 0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -46,26 +49,56 @@ class _SearchPageState extends State<SearchPage> {
             SizedBox(height: 20,),
             GestureDetector(
               onTap: () async {
+                setState(() {
+                  animationValue = 135;
+                });
+
                 FocusScope.of(context).unfocus(); // Unfocuses the keyboard
                 var address = await Geocoder.local.findAddressesFromQuery(cityNameTextEditingController.text);
                 // print(address.first.coordinates);
                 await WeatherApi().callWeatherData(address.first.coordinates.latitude, address.first.coordinates.longitude);                
                 Navigator.pop(context);
               },
-              child: Container(
-                height: 50,
-                width: MediaQuery.of(context).size.width,              
-                decoration: BoxDecoration(
-                  border: Border.all(width: 2, color: Colors.orange),
-                  borderRadius: BorderRadius.circular(50)
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Search', style: TextStyle(color: Colors.orange, fontSize: 24),),
-                    SizedBox(width: 10,),
-                    Icon(Icons.search, color: Colors.orange),
-                  ],
+              child: TweenAnimationBuilder(
+                duration: Duration(milliseconds: 200),
+                tween: Tween<double>(begin: 0, end: animationValue),
+                builder: (context, value, child) {
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: value),
+                    child: child,
+                  );
+                },
+                child: Container(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width,              
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 2, color: Colors.orange),
+                    borderRadius: BorderRadius.circular(50)
+                  ),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Search', style: TextStyle(color: Colors.orange, fontSize: animationValue != 0 ? 0 : 24),),
+                          SizedBox(width: 10,),
+                          Icon(Icons.search, color: Colors.orange, size: animationValue != 0 ? 0 : 30,),
+                        ],
+                      ),
+                      Opacity(
+                        opacity: animationValue != 0 ? 1 : 0,
+                        child: SizedBox(
+                          height: 30,
+                          width: 30,
+                          child: CircularProgressIndicator(
+                            backgroundColor: Colors.orange,
+                            valueColor: AlwaysStoppedAnimation<Color>(Colors.white70),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             )
