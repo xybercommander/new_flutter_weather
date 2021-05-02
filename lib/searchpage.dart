@@ -46,6 +46,7 @@ class _SearchPageState extends State<SearchPage> {
             SizedBox(height: 20,),
             GestureDetector(
               onTap: () async {
+                FocusScope.of(context).unfocus(); // Unfocuses the keyboard
                 var address = await Geocoder.local.findAddressesFromQuery(cityNameTextEditingController.text);
                 // print(address.first.coordinates);
                 await WeatherApi().callWeatherData(address.first.coordinates.latitude, address.first.coordinates.longitude);                
