@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 // ignore: missing_return
 Widget weatherBackground(context, String description) {
-  if(description == 'clear sky') {
+  if(description == 'Clear') {
     return Positioned(      
       left: 70,
       child: ImageFiltered(
@@ -11,7 +11,7 @@ Widget weatherBackground(context, String description) {
         child: Image.asset('assets/images/clear_sky_bg.jpg')
       ),
     );
-  } else if(description == 'rain') {
+  } else if(description == 'Rain' || description == 'Tornado' || description == 'Squall' || description == 'Drizzle') {
     return Positioned(      
       right: 50,
       child: ImageFiltered(
@@ -19,7 +19,7 @@ Widget weatherBackground(context, String description) {
         child: Image.asset('assets/images/rain_bg.jpg')
       ),
     );
-  } else if(description == 'thunderstorm') {
+  } else if(description == 'Thunderstorm' || description == 'Haze' || description == 'Mist' || description == 'Fog' || description == 'Ash' || description == 'Clouds') {
     return Positioned(      
       right: 0,
       child: ImageFiltered(
@@ -27,7 +27,7 @@ Widget weatherBackground(context, String description) {
         child: Image.asset('assets/images/thunderstorm_bg.jpg')
       ),
     );
-  } else if(description == 'snow') {
+  } else if(description == 'Snow' || description == 'Mist' || description == 'Smoke') {
     return Positioned(      
       top: 0,
       child: ImageFiltered(

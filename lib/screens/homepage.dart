@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          weatherBackground(context, 'clear sky'),
+          weatherBackground(context, WeatherConstants.hourlyDescription[0]),
           SafeArea(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -184,7 +184,7 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   Text('${WeatherConstants.hourlyTemp[index]}℃', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
                                   Image.asset(Constants.iconMap[WeatherConstants.hourlyDescription[index]], height: 40, width: 40,),
-                                  Text('${DateTime.now().hour + index}:00', style: TextStyle(fontSize: 15)),
+                                  Text('${(DateTime.now().hour + index) % 24}:00', style: TextStyle(fontSize: 15)),
                                 ],
                               ),
                             );

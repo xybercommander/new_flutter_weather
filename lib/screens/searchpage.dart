@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:new_weather_app/modules/weather_constants.dart';
@@ -58,7 +60,9 @@ class _SearchPageState extends State<SearchPage> with SingleTickerProviderStateM
                 // print(address.first.coordinates);
                 WeatherConstants.cityName = '${cityNameTextEditingController.text[0].toUpperCase()}${cityNameTextEditingController.text.substring(1)}, ${address.first.countryCode}';
                 await WeatherApi().callWeatherData(address.first.coordinates.latitude, address.first.coordinates.longitude);                
-                Navigator.pop(context);
+                Timer(Duration(seconds: 1), () {
+                  Navigator.pop(context);
+                });
               },
               child: TweenAnimationBuilder(
                 duration: Duration(milliseconds: 200),
