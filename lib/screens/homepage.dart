@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:new_weather_app/modules/constants.dart';
 import 'package:new_weather_app/modules/weather_constants.dart';
-import 'package:new_weather_app/searchpage.dart';
+import 'package:new_weather_app/screens/searchpage.dart';
 import 'package:new_weather_app/widgets/bg-color-widgets.dart';
 import 'package:page_transition/page_transition.dart';
 
