@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:new_weather_app/screens/homepage.dart';
+import 'package:new_weather_app/screens/splashscreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'Comfortaa'
       ),
-      home: HomePage(),
+      home: SplashScreen(),
     );
   }
 }
