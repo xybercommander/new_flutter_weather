@@ -27,6 +27,7 @@ dependencies:
   geocoder: ^0.2.1
   http: ^0.13.2
   intl: ^0.17.0
+  lottie: ^1.0.1
 
 
   # The following adds the Cupertino Icons font to your application.
